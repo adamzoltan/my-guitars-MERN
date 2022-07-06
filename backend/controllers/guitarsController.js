@@ -12,6 +12,23 @@ const getAllGuitars = async (req, res) => {
     }
 }
 
+//get a single guitar
+const getGuitar = async (req, res) => {
+    const {id} = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(404).json({error: 'Invalid ID'})
+    }
+
+    const guitar = await Guitar.findById({_id:id})
+
+    if(!guitar) {
+        res.status(404).json({error: 'Guitar not found'})
+    }
+
+    res.status(200).json(guitar)
+}
+
 //add a new guitar
 const addGuitar = async (req, res) => {
     const {brand, type, body, pickups, material, neck, image, owned} = req.body
@@ -43,5 +60,6 @@ const deleteGuitar = async (req, res) => {
 module.exports = {
     addGuitar,
     getAllGuitars,
+    getGuitar,
     deleteGuitar
 }
