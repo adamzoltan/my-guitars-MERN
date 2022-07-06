@@ -17,16 +17,16 @@ const getGuitar = async (req, res) => {
     const {id} = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        res.status(404).json({error: 'Invalid ID'})
+       return res.status(404).json({error: 'Invalid ID'})
     }
 
     const guitar = await Guitar.findById({_id:id})
 
     if(!guitar) {
-        res.status(404).json({error: 'Guitar not found'})
+       return res.status(404).json({error: 'Guitar not found'})
     }
 
-    res.status(200).json(guitar)
+    return res.status(200).json(guitar)
 }
 
 //add a new guitar
@@ -45,16 +45,16 @@ const deleteGuitar = async (req, res) => {
     const {id} = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        res.status(404).json({error: 'Invalid ID'})
+        return res.status(404).json({error: 'Invalid ID'})
     }
 
     const guitar = await Guitar.findOneAndDelete({_id:id})
 
     if(!guitar) {
-        res.status(404).json({error: 'Guitar not found'})
+        return res.status(404).json({error: 'Guitar not found'})
     }
 
-    res.status(200).json(guitar)
+    return res.status(200).json(guitar)
 }
 
 module.exports = {
