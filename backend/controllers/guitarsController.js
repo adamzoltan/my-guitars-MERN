@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
 const getAllGuitars = async (req, res) => {
     try {
         const guitars = await Guitar.find({ brand: 1})
-        res.status(200).json(guitars)
+        return res.status(200).json(guitars)
     } catch(error) {
-        res.status(400).json({error: error.message})
+        return res.status(400).json({error: error.message})
     }
 }
 
@@ -34,9 +34,9 @@ const addGuitar = async (req, res) => {
     const {brand, type, body, pickups, material, neck, image, owned} = req.body
     try {  
         const guitar = await Guitar.create({brand, type, body, pickups, material, neck, image, owned})
-        res.status(200).json(guitar)
+        return res.status(200).json(guitar)
     } catch(error) {
-        res.status(400).json({error: error.message})
+        return res.status(400).json({error: error.message})
     }
 }
 
