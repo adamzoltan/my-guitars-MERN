@@ -1,0 +1,30 @@
+.wrapper {
+    width: 85%;
+    margin: 2rem auto;
+    text-align: center;
+  }
+  
+  .flex{
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .guitar-details{
+    display: grid;
+    margin: 2vw;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  .img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img{
+    max-width: 90%;
+    height: auto;
+    transition: all 0.2s ease-out;
+  }
+  
