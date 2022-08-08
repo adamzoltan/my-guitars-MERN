@@ -6,12 +6,30 @@ const AddGuitar = () => {
   const [brand, setBrand]  = useState('');
   const [type, setType]  = useState('');
   const [body, setBody]  = useState('');
-  const [pickup, setPickup]  = useState('');
+  const [pickups, setPickups]  = useState('');
   const [material, setMaterial]  = useState('');
   const [neck, setNeck]  = useState('');
   const [owned, setOwned] = useState('')
   const [image, setImage] = useState('')
 //   const history = useHistory()
+
+  const postGuitar = async (newGuitar) => {
+    try {
+        const response = await fetch(`/api/guitars`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(newGuitar)
+        })
+        console.log(response);
+        if (!response.ok) {
+            throw new Error('Something went wrong while adding a new guitar')
+          }
+    } catch (error) {
+        console.log(error.message);
+    }
+  }
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -19,13 +37,14 @@ const AddGuitar = () => {
       'brand': brand,
       'type': type,
       'body': body,
-      'pickup': pickup,
+      'pickups': pickups,
       'material': material,
       'neck': neck,
       'owned': owned,
       'image': image
     }
     console.log(newGuitar);
+    postGuitar(newGuitar)
   }
   return (
     <div className={classes['wrapper']} onSubmit={onSubmitHandler}>
@@ -58,8 +77,8 @@ const AddGuitar = () => {
         </label>
 
         <label>
-          <span>Pickup:</span>
-          <select onChange={(e) => setPickup(e.target.value)}>
+          <span>Pickups :</span>
+          <select onChange={(e) => setPickups(e.target.value)}>
             <option value="">--Choose an option--</option>
             <option value="HH">HH</option>
             <option value="HSS">HSS</option>
