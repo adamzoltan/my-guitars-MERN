@@ -35,11 +35,11 @@ function App() {
       <BrowserRouter>
         <NavBar></NavBar>
         <div className='pages'>
-          <Routes>
+          {isLoaded && <Routes>
             <Route path='/' element={<MyGuitars guitars={guitars}/>}/>
             <Route path='/my-guitars' element={<MyGuitars guitars={guitars}/>}/>
-            <Route path='/wishlist' element={<WishList/>}/>
-          </Routes>  
+            <Route path='/wishlist' element={<WishList guitars={guitars}/>}/>
+          </Routes>}
         </div>
       </BrowserRouter>
     </div>
