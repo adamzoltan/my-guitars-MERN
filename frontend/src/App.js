@@ -2,8 +2,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
 //pages & components
-import MyGuitars from './pages/MyGuitars'
+import MyGuitars from './pages/MyGuitars';
 import WishList from './pages/WishList';
+import AddGuitar from './pages/AddGuitar'
 import NavBar from './components/NavBar'
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/' element={<MyGuitars guitars={guitars}/>}/>
             <Route path='/my-guitars' element={<MyGuitars guitars={guitars}/>}/>
             <Route path='/wishlist' element={<WishList guitars={guitars}/>}/>
+            <Route path='/addguitar' element={<AddGuitar/>}/>
           </Routes>}
         </div>
       </BrowserRouter>

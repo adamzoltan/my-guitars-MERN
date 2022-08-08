@@ -15,6 +15,7 @@ const NavBar = () => {
                         <NavLink  to="/wishlist">Wishlist</NavLink>
                     </li>
                 </ul>
+                <NavLink activeClassName={classes['active']} to="/addguitar">Add Guitar</NavLink>
             </nav>
         </header>
     )
